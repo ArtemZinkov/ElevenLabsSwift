@@ -320,6 +320,7 @@ public class ElevenLabsSDK {
             // Initialize the Audio Session
             let audioSession = AVAudioSession.sharedInstance()
             try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
+            try audioSession.overrideOutputAudioPort(.speaker)
             try audioSession.setPreferredSampleRate(sampleRate)
             try audioSession.setActive(true)
 
@@ -1069,8 +1070,9 @@ public class ElevenLabsSDK {
         do {
             // Configure for voice chat with minimum latency
             try audioSession.setCategory(.playAndRecord,
-                                         mode: .voiceChat,
+                                         mode: .default,
                                          options: [.defaultToSpeaker, .allowBluetooth])
+            try audioSession.overrideOutputAudioPort(.speaker)
 
             // Set preferred IO buffer duration for lower latency
             try audioSession.setPreferredIOBufferDuration(0.005) // 5ms buffer
