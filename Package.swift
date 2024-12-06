@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "ElevenLabsSDK",
     platforms: [
-        .iOS(.v17),
+        .iOS(.v16),
     ],
     products: [
         .library(
@@ -12,13 +12,9 @@ let package = Package(
             targets: ["ElevenLabsSDK"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/daltoniam/Starscream.git", from: "4.0.0"),
-    ],
     targets: [
         .target(
-            name: "ElevenLabsSDK",
-            dependencies: ["Starscream"]
+            name: "ElevenLabsSDK"
         ),
     ]
 )
